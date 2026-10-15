@@ -34,7 +34,6 @@ object ModuleFactory {
             fun entry(name: String, content: String, exec: Boolean = false) {
                 val e = ZipEntry(name)
                 e.time = System.currentTimeMillis()
-                if (exec) e.unixMode = 493 // 0755
                 zip.putNextEntry(e)
                 zip.write(content.toByteArray(Charsets.UTF_8))
                 zip.closeEntry()

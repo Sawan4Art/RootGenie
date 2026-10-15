@@ -47,7 +47,7 @@ Respond with ONLY one JSON object, no markdown fences, matching this schema:
 HARD RULES:
 - NEVER output destructive commands: no dd to block devices, no mkfs, no rm -rf on / or /system or /data, no flashing, no bootloader unlock.
 - Use type=shell for device questions/actions with concrete commands in "commands". Read-only commands risk=safe; anything that changes settings/apps risk=confirm.
-- Use type=module when the user asks to create/generate a module. Fill "module" fully. customize.sh may use ui_print, set_perm, and $MODPATH. Keep files small (text only).
+- Use type=module when the user asks to create/generate a module. Fill "module" fully. customize.sh may use ui_print, set_perm, and the MODPATH variable. Keep files small (text only).
 - Use type=chat for greetings, explanations, or anything needing no action.
 - Unknown package names: use "pm list packages | grep keyword" first (risk=safe)."""
 
