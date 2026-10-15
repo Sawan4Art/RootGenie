@@ -38,4 +38,18 @@
     <string name="save">حفظ</string>
     <string name="saved">✔ اتسحنت</string>
     <string name="endpoints_hint">بيشتغل مع أي endpoint متوافق مع OpenAI:\n• OpenAI: https://api.openai.com/v1\n• Gemini: https://generativelanguage.googleapis.com/v1beta/openai\n• OpenRouter: https://openrouter.ai/api/v1\n• كمبيوتر محلي: http://IP:1234/v1 (LM Studio)</string>
+
+    <!-- Free provider presets -->
+    <string name="presets_label">⚡ مزودين ذكاء اصطناعي مجانين — دوس والخانات تتملي لوحدها</string>
+    <string name="preset_gemini">جوجل Gemini (مجاني)</string>
+    <string name="preset_openrouter">OpenRouter (مجاني)</string>
+    <string name="preset_groq">Groq (مجاني)</string>
+    <string name="preset_openai">OpenAI (مدفوع)</string>
+    <string name="preset_filled">اتمليت ✔ دلوقتي الصق مفتاحك ودوس حفظ</string>
+    <string name="test_btn">اختبار الاتصال</string>
+    <string name="testing">بتختبر…</string>
+    <string name="test_ok">✔ الذكاء الاصطناعي شغال تمام!</string>
+    <string name="test_fail">❌ فشل الاختبار:</string>
+    <string name="test_no_key">مفيش مفتاح محفوظ لسه.</string>
+    <string name="free_key_hint">تجيب مفتاح مجاني إزاي؟ (دقيقة واحدة ومن غير فيزا):\n• جوجل Gemini: aistudio.google.com/apikey → Create API key\n• OpenRouter: openrouter.ai/keys (الموديلات المجانية: openrouter.ai/models?max_price=0)\n• Groq: console.groq.com/keys\nوبعدين: الصق المفتاح فوق → حفظ → اختبار الاتصال.</string>
 </resources>
