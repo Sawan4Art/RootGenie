@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RootGenie</string>
+
+    <!-- Tabs -->
+    <string name="tab_chat">Chat</string>
+    <string name="tab_modules">Modules</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Chat -->
+    <string name="welcome_msg">👋 I\'m RootGenie — your AI root assistant.\n\nAsk me to control your device in Arabic or English, or describe a Magisk module and I\'ll build &amp; install it for you.\n\nExamples:\n• "what is my battery status"\n• "change density to 420"\n• "build me a performance tweaks module"</string>
+    <string name="thinking">🧠 thinking…</string>
+    <string name="hint_input">Ask anything, or describe a module…</string>
+    <string name="send">Send</string>
+    <string name="root_status_ok">ROOT ✔</string>
+    <string name="root_status_no">No root detected</string>
+    <string name="confirm_title">Confirm command</string>
+    <string name="run">Run</string>
+    <string name="cancel">Cancel</string>
+    <string name="blocked_cmd">🛡️ BLOCKED by safety gate:</string>
+
+    <!-- Modules -->
+    <string name="generate">⚡ Generate Module</string>
+    <string name="module_hint">Describe the module you want…\ne.g. "module that boosts touch responsiveness and disables logging"</string>
+    <string name="module_list_title">Generated modules</string>
+    <string name="build_ok">Module built</string>
+    <string name="build_fail">❌ Failed to build module:</string>
+    <string name="install_title">Install module?</string>
+    <string name="install_q">Install "%1$s" now via Magisk?</string>
+    <string name="reboot_hint">🔄 Reboot to apply the module.</string>
+    <string name="install">Install</string>
+
+    <!-- Settings -->
+    <string name="api_base_label">API base URL (OpenAI-compatible)</string>
+    <string name="api_key_label">API key</string>
+    <string name="model_label">Model name</string>
+    <string name="strict_label">Strict safety mode (confirm every change)</string>
+    <string name="save">Save</string>
+    <string name="saved">✔ Saved</string>
+    <string name="endpoints_hint">Works with any OpenAI-compatible endpoint:\n• OpenAI: https://api.openai.com/v1\n• Gemini: https://generativelanguage.googleapis.com/v1beta/openai\n• OpenRouter: https://openrouter.ai/api/v1\n• Local PC: http://PC-IP:1234/v1 (LM Studio)</string>
+</resources>

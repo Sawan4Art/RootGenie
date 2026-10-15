@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">روت جيني</string>
+
+    <!-- Tabs -->
+    <string name="tab_chat">المحادثة</string>
+    <string name="tab_modules">الموديولات</string>
+    <string name="tab_settings">الإعدادات</string>
+
+    <!-- Chat -->
+    <string name="welcome_msg">👋 أنا روت چيني — مساعدك الذكي بصلاحيات الروت.\n\nاطلب مني التحكم في جهازك بالعربي أو الإنجليزي، أو اوصف لي موديول Magisk وأبنيه وأنصبه لك.\n\nأمثلة:\n• "إيه حالة البطارية"\n• "غيّر الكثافة لـ 420"\n• "ابني لي موديول تويكس أداء"</string>
+    <string name="thinking">🧠 بفكر…</string>
+    <string name="hint_input">اسأل أي حاجة، أو اوصف موديول…</string>
+    <string name="send">إرسال</string>
+    <string name="root_status_ok">الروت شغال ✔</string>
+    <string name="root_status_no">مفيش روت شغال</string>
+    <string name="confirm_title">تأكيد الأمر</string>
+    <string name="run">تنفيذ</string>
+    <string name="cancel">إلغاء</string>
+    <string name="blocked_cmd">🛡️ بوابات الأمان منعت الأمر ده:</string>
+
+    <!-- Modules -->
+    <string name="generate">⚡ ولّد موديول</string>
+    <string name="module_hint">اوصف الموديول اللي عايزه…\nمثال: "موديول يسرّع استجابة اللمس ويوقف سجلات النظام"</string>
+    <string name="module_list_title">الموديولات المولّدة</string>
+    <string name="build_ok">الموديول اتبنى</string>
+    <string name="build_fail">❌ فشل بناء الموديول:</string>
+    <string name="install_title">تثبيت الموديول؟</string>
+    <string name="install_q">تثبيت "%1$s" دلوقتي عن طريق Magisk؟</string>
+    <string name="reboot_hint">🔄 اعمل ريستارت علشان الموديول يشتغل.</string>
+    <string name="install">تثبيت</string>
+
+    <!-- Settings -->
+    <string name="api_base_label">رابط الـ API (متوافق مع OpenAI)</string>
+    <string name="api_key_label">مفتاح الـ API</string>
+    <string name="model_label">اسم الموديل</string>
+    <string name="strict_label">وضع الأمان الصارم (تأكيد كل تغيير)</string>
+    <string name="save">حفظ</string>
+    <string name="saved">✔ اتسحنت</string>
+    <string name="endpoints_hint">بيشتغل مع أي endpoint متوافق مع OpenAI:\n• OpenAI: https://api.openai.com/v1\n• Gemini: https://generativelanguage.googleapis.com/v1beta/openai\n• OpenRouter: https://openrouter.ai/api/v1\n• كمبيوتر محلي: http://IP:1234/v1 (LM Studio)</string>
+</resources>
