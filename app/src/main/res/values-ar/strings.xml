@@ -39,6 +39,12 @@
     <string name="saved">✔ اتسحنت</string>
     <string name="endpoints_hint">بيشتغل مع أي endpoint متوافق مع OpenAI:\n• OpenAI: https://api.openai.com/v1\n• Gemini: https://generativelanguage.googleapis.com/v1beta/openai\n• OpenRouter: https://openrouter.ai/api/v1\n• كمبيوتر محلي: http://IP:1234/v1 (LM Studio)</string>
 
+    <!-- Built-in AI (zero setup) -->
+    <string name="builtin_active">✅ الذكاء الاصطناعي شغال من أول لحظة — مفتاح مدمج جوه التطبيق، مش محتاج تعمل أي إعداد. لو حابب تستخدم مفتاحك الشخصي بداله، الصقه تحت.</string>
+    <string name="builtin_key_saved">شغال بمفتاحك الشخصي (المفتاح المدمج موجود كخطة بديلة لو احتجته).</string>
+    <string name="builtin_missing">النسخة دي مش فيها مفتاح مدمج — اختار مزود من تحت والصق مفتاح (Groq مجاني: console.groq.com/keys).</string>
+    <string name="builtin_key_hint">مفتاح مدمج شغال — سيب الخانة فاضية علشان تستخدمه</string>
+
     <!-- Free provider presets -->
     <string name="presets_label">⚡ مزودين ذكاء اصطناعي مجانين — دوس والخانات تتملي لوحدها</string>
     <string name="preset_gemini">جوجل Gemini (مجاني)</string>
@@ -58,6 +64,6 @@
     <string name="testing">بتختبر…</string>
     <string name="test_ok">✔ الذكاء الاصطناعي شغال تمام!</string>
     <string name="test_fail">❌ فشل الاختبار:</string>
-    <string name="test_no_key">مفيش مفتاح محفوظ لسه.</string>
+    <string name="test_no_key">مفيش مفتاح خالص — حط مفتاح تحت (Groq مجاني: console.groq.com/keys).</string>
     <string name="free_key_hint">تجيب مفتاح مجاني إزاي؟ (دقيقة واحدة ومن غير فيزا):\n• جوجل Gemini: aistudio.google.com/apikey → Create API key\n• OpenRouter: openrouter.ai/keys (الموديلات المجانية: openrouter.ai/models?max_price=0)\n• Groq: console.groq.com/keys\nوبعدين: الصق المفتاح فوق → حفظ → اختبار الاتصال.</string>
 </resources>

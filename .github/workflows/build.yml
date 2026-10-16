@@ -24,6 +24,10 @@ jobs:
           gradle-version: '8.7'
 
       - name: Build Debug APK
+        env:
+          BUILTIN_AI_KEY: ${{ secrets.BUILTIN_AI_KEY }}
+          BUILTIN_AI_BASE: ${{ secrets.BUILTIN_AI_BASE }}
+          BUILTIN_AI_MODEL: ${{ secrets.BUILTIN_AI_MODEL }}
         run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK artifact

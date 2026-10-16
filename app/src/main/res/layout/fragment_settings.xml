@@ -10,6 +10,16 @@
         android:padding="12dp">
 
         <TextView
+            android:id="@+id/tv_builtin_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurfaceVariant"
+            android:padding="10dp"
+            android:text="@string/builtin_active"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/api_base_label"

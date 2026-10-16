@@ -39,6 +39,12 @@
     <string name="saved">✔ Saved</string>
     <string name="endpoints_hint">Works with any OpenAI-compatible endpoint:\n• OpenAI: https://api.openai.com/v1\n• Gemini: https://generativelanguage.googleapis.com/v1beta/openai\n• OpenRouter: https://openrouter.ai/api/v1\n• Local PC: http://PC-IP:1234/v1 (LM Studio)</string>
 
+    <!-- Built-in AI (zero setup) -->
+    <string name="builtin_active">✅ AI works out of the box — built-in key is active, no setup needed. Want your own key instead? Just paste it below.</string>
+    <string name="builtin_key_saved">Using your personal key (built-in key stays as a fallback).</string>
+    <string name="builtin_missing">No built-in AI in this build — pick a provider below and paste a key (free Groq: console.groq.com/keys).</string>
+    <string name="builtin_key_hint">built-in key active — leave empty to use it</string>
+
     <!-- Free provider presets -->
     <string name="presets_label">⚡ Free AI providers — tap to auto-fill</string>
     <string name="preset_gemini">Google Gemini (FREE)</string>
@@ -58,6 +64,6 @@
     <string name="testing">Testing…</string>
     <string name="test_ok">✔ AI is working!</string>
     <string name="test_fail">❌ Test failed:</string>
-    <string name="test_no_key">No API key saved yet.</string>
+    <string name="test_no_key">No key at all — paste one below (free Groq: console.groq.com/keys).</string>
     <string name="free_key_hint">How to get a FREE key (1 minute, no card):\n• Google Gemini: aistudio.google.com/apikey → Create API key\n• OpenRouter: openrouter.ai/keys (free models: openrouter.ai/models?max_price=0)\n• Groq: console.groq.com/keys\nThen: paste key above → Save → Test connection.</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.rootgenie.app.PrefStore
 import com.rootgenie.app.R
 import com.rootgenie.app.ai.AIClient
+import com.rootgenie.app.BuildConfig
 import kotlinx.coroutines.runBlocking
 
 class SettingsFragment : Fragment() {
@@ -37,11 +38,28 @@ class SettingsFragment : Fragment() {
         model.setText(PrefStore.getModel(requireContext()))
         strict.isChecked = PrefStore.isStrict(requireContext())
 
+        val builtinStatus = view.findViewById<TextView>(R.id.tv_builtin_status)
+
+        fun refreshBuiltinUi() {
+            val ctx = requireContext()
+            builtinStatus.text = when {
+                PrefStore.usesBuiltin(ctx)  -> getString(R.string.builtin_active)
+                PrefStore.hasBuiltinKey()   -> getString(R.string.builtin_key_saved)
+                else                        -> getString(R.string.builtin_missing)
+            }
+            // Show the built-in values as hints so the user sees what is active without it being saved
+            base.hint  = if (PrefStore.hasBuiltinKey()) BuildConfig.BUILTIN_AI_BASE else ""
+            model.hint = if (PrefStore.hasBuiltinKey()) BuildConfig.BUILTIN_AI_MODEL else ""
+            key.hint   = if (PrefStore.usesBuiltin(ctx)) getString(R.string.builtin_key_hint) else ""
+        }
+        refreshBuiltinUi()
+
         view.findViewById<Button>(R.id.btn_save).setOnClickListener {
             PrefStore.setApiBase(requireContext(), base.text.toString())
             PrefStore.setApiKey(requireContext(), key.text.toString())
             PrefStore.setModel(requireContext(), model.text.toString())
             PrefStore.setStrict(requireContext(), strict.isChecked)
+            refreshBuiltinUi()
             Toast.makeText(requireContext(), R.string.saved, Toast.LENGTH_SHORT).show()
         }
 
@@ -123,7 +141,7 @@ class SettingsFragment : Fragment() {
             status.text = getString(R.string.testing)
             Thread {
                 val result: String = try {
-                    if (PrefStore.getApiKey(ctx).isBlank()) {
+                    if (PrefStore.getApiKeyEff(ctx).isBlank()) {
                         getString(R.string.test_fail) + " " + getString(R.string.test_no_key)
                     } else {
                         runBlocking { AIClient.chat(ctx, "ping") }

@@ -3,6 +3,19 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+// ---- Built-in AI provider (zero-setup for end users) ----
+// Injected at BUILD TIME, never stored in source code:
+//  • CI: GitHub Actions secrets BUILTIN_AI_KEY / BUILTIN_AI_BASE / BUILTIN_AI_MODEL
+//  • Local: local.properties keys builtinAiKey / builtinAiBase / builtinAiModel (gitignored)
+// Rotate the key any time: update the secret and rebuild — no code change needed.
+def localProps = new Properties()
+def lpFile = rootProject.file("local.properties")
+if (lpFile.exists()) lpFile.withInputStream { localProps.load(it) }
+
+def builtinKey   = System.getenv("BUILTIN_AI_KEY")   ?: (localProps.getProperty("builtinAiKey")   ?: "")
+def builtinBase  = System.getenv("BUILTIN_AI_BASE")  ?: (localProps.getProperty("builtinAiBase")  ?: "https://api.groq.com/openai/v1/chat/completions")
+def builtinModel = System.getenv("BUILTIN_AI_MODEL") ?: (localProps.getProperty("builtinAiModel") ?: "meta-llama/llama-4-scout-17b-16e-instruct")
+
 android {
     namespace 'com.rootgenie.app'
     compileSdk 34
@@ -11,8 +24,16 @@ android {
         applicationId "com.rootgenie.app"
         minSdk 26
         targetSdk 34
-        versionCode 4
-        versionName "0.1.3"
+        versionCode 5
+        versionName "0.2.0"
+
+        buildConfigField "String", "BUILTIN_AI_KEY",   "\"${builtinKey}\""
+        buildConfigField "String", "BUILTIN_AI_BASE",  "\"${builtinBase}\""
+        buildConfigField "String", "BUILTIN_AI_MODEL", "\"${builtinModel}\""
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {

@@ -53,7 +53,7 @@ HARD RULES:
 
     suspend fun chat(ctx: Context, userText: String, forceModule: Boolean = false): JSONObject =
         withContext(Dispatchers.IO) {
-            val base = PrefStore.getApiBase(ctx).trimEnd('/')
+            val base = PrefStore.getApiBaseEff(ctx).trimEnd('/')
             val url = when {
                 base.endsWith("/chat/completions") -> base
                 Regex("/v\\d+$").containsMatchIn(base) -> "$base/chat/completions"
@@ -64,7 +64,7 @@ HARD RULES:
                 "\n- The user request is a MODULE REQUEST: respond with type=module." else SYSTEM_PROMPT
 
             val body = JSONObject().apply {
-                put("model", PrefStore.getModel(ctx))
+                put("model", PrefStore.getModelEff(ctx))
                 put("temperature", 0.3)
                 put("messages", JSONArray().apply {
                     put(JSONObject().put("role", "system").put("content", sys))
@@ -74,7 +74,7 @@ HARD RULES:
 
             val req = Request.Builder()
                 .url(url)
-                .addHeader("Authorization", "Bearer ${PrefStore.getApiKey(ctx)}")
+                .addHeader("Authorization", "Bearer ${PrefStore.getApiKeyEff(ctx)}")
                 .addHeader("Content-Type", "application/json")
                 .post(body.toString().toRequestBody("application/json".toMediaType()))
                 .build()
@@ -106,7 +106,7 @@ HARD RULES:
      * (Groq, OpenRouter, Gemini-compat, Mistral, LM Studio, Ollama, ...).
      */
     suspend fun models(ctx: Context): List<String> = withContext(Dispatchers.IO) {
-        val base = PrefStore.getApiBase(ctx).trimEnd('/')
+        val base = PrefStore.getApiBaseEff(ctx).trimEnd('/')
         val url = when {
             base.endsWith("/chat/completions") -> base.removeSuffix("/chat/completions") + "/models"
             Regex("/v\\d+$").containsMatchIn(base) -> "$base/models"
@@ -114,7 +114,7 @@ HARD RULES:
         }
         val req = Request.Builder()
             .url(url)
-            .addHeader("Authorization", "Bearer ${PrefStore.getApiKey(ctx)}")
+            .addHeader("Authorization", "Bearer ${PrefStore.getApiKeyEff(ctx)}")
             .get()
             .build()
         val resp = client.newCall(req).execute()
