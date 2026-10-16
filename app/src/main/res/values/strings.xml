@@ -45,8 +45,16 @@
     <string name="preset_openrouter">OpenRouter (FREE)</string>
     <string name="preset_groq">Groq (FREE)</string>
     <string name="preset_openai">OpenAI</string>
+    <string name="preset_mistral">Mistral (FREE)</string>
+    <string name="preset_local">Local WiFi (no key)</string>
     <string name="preset_filled">Fields filled ✔ Now paste your API key and hit Save</string>
+    <string name="preset_filled_local">Local preset filled — change the IP to your PC\'s address, then Save</string>
     <string name="test_btn">Test connection</string>
+    <string name="fetch_models">Fetch available models</string>
+    <string name="fetching_models">Fetching models…</string>
+    <string name="found_models">%1$d models found — pick one</string>
+    <string name="no_models">No models found — check endpoint/key.</string>
+    <string name="models_dialog_title">Available models</string>
     <string name="testing">Testing…</string>
     <string name="test_ok">✔ AI is working!</string>
     <string name="test_fail">❌ Test failed:</string>

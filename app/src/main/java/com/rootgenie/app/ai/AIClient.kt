@@ -90,11 +90,44 @@ HARD RULES:
                     .getJSONObject(0)
                     .getJSONObject("message")
                     .getString("content")
-                // Strip possible markdown fences
+                // Lenient parse: weak free models sometimes wrap JSON in chatter
                 val clean = content.trim()
                     .removePrefix("```json").removePrefix("```")
                     .removeSuffix("```").trim()
-                JSONObject(clean)
+                val start = clean.indexOf('{')
+                val end = clean.lastIndexOf('}')
+                if (start < 0 || end <= start) throw RuntimeException("الرد مش JSON: ${clean.take(120)}")
+                JSONObject(clean.substring(start, end + 1))
             }
         }
+
+    /**
+     * Fetch available model IDs from any OpenAI-compatible provider
+     * (Groq, OpenRouter, Gemini-compat, Mistral, LM Studio, Ollama, ...).
+     */
+    suspend fun models(ctx: Context): List<String> = withContext(Dispatchers.IO) {
+        val base = PrefStore.getApiBase(ctx).trimEnd('/')
+        val url = when {
+            base.endsWith("/chat/completions") -> base.removeSuffix("/chat/completions") + "/models"
+            Regex("/v\\d+$").containsMatchIn(base) -> "$base/models"
+            else -> "$base/v1/models"
+        }
+        val req = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer ${PrefStore.getApiKey(ctx)}")
+            .get()
+            .build()
+        val resp = client.newCall(req).execute()
+        resp.use { r ->
+            val text = r.body?.string() ?: "{}"
+            if (!r.isSuccessful) throw RuntimeException("API ${r.code}: ${text.take(200)}")
+            val data = JSONObject(text).optJSONArray("data") ?: JSONArray()
+            val ids = mutableListOf<String>()
+            for (i in 0 until data.length()) {
+                val id = data.optJSONObject(i)?.optString("id") ?: continue
+                if (id.isNotBlank()) ids.add(id)
+            }
+            ids.sorted()
+        }
+    }
 }

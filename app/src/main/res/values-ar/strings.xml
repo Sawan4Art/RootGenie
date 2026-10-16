@@ -45,8 +45,16 @@
     <string name="preset_openrouter">OpenRouter (مجاني)</string>
     <string name="preset_groq">Groq (مجاني)</string>
     <string name="preset_openai">OpenAI (مدفوع)</string>
+    <string name="preset_mistral">Mistral (مجاني)</string>
+    <string name="preset_local">محلي واي فاي (بدون مفتاح)</string>
     <string name="preset_filled">اتمليت ✔ دلوقتي الصق مفتاحك ودوس حفظ</string>
+    <string name="preset_filled_local">اتمليت — غيّر الـ IP لبتاع الكمبيوتر بتاعك وبعدين احفظ</string>
     <string name="test_btn">اختبار الاتصال</string>
+    <string name="fetch_models">هات الموديلات المتاحة</string>
+    <string name="fetching_models">بجيب الموديلات…</string>
+    <string name="found_models">لقيت %1$d موديل — اختار واحد</string>
+    <string name="no_models">مفيش موديلات — راجع الرابط والمفتاح.</string>
+    <string name="models_dialog_title">الموديلات المتاحة</string>
     <string name="testing">بتختبر…</string>
     <string name="test_ok">✔ الذكاء الاصطناعي شغال تمام!</string>
     <string name="test_fail">❌ فشل الاختبار:</string>

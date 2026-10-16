@@ -68,6 +68,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/preset_openai" />
+
+                <Button
+                    android:id="@+id/btn_preset_mistral"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/preset_mistral" />
+
+                <Button
+                    android:id="@+id/btn_preset_local"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/preset_local" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -117,6 +133,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/test_btn" />
+
+        <Button
+            android:id="@+id/btn_models"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/fetch_models" />
 
         <TextView
             android:id="@+id/tv_test_status"

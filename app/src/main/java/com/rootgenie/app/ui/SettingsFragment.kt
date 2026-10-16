@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.rootgenie.app.PrefStore
 import com.rootgenie.app.R
@@ -61,14 +62,53 @@ class SettingsFragment : Fragment() {
             R.id.btn_preset_openai to Preset(
                 "https://api.openai.com/v1/chat/completions",
                 "gpt-4o-mini"
+            ),
+            R.id.btn_preset_mistral to Preset(
+                "https://api.mistral.ai/v1/chat/completions",
+                "mistral-small-latest"
+            ),
+            R.id.btn_preset_local to Preset(
+                "http://192.168.1.100:1234/v1/chat/completions",
+                "local-model"
             )
         )
         presets.forEach { (id, p) ->
             view.findViewById<Button>(id).setOnClickListener {
                 base.setText(p.base)
                 model.setText(p.model)
-                Toast.makeText(requireContext(), R.string.preset_filled, Toast.LENGTH_LONG).show()
+                val msg = if (id == R.id.btn_preset_local) R.string.preset_filled_local else R.string.preset_filled
+                Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
             }
+        }
+
+        // ---- Fetch available models from any provider ----
+        view.findViewById<Button>(R.id.btn_models).setOnClickListener {
+            val ctx = requireContext()
+            PrefStore.setApiBase(ctx, base.text.toString())
+            PrefStore.setApiKey(ctx, key.text.toString())
+            status.text = getString(R.string.fetching_models)
+            Thread {
+                var error: String? = null
+                val list: List<String> = try {
+                    runBlocking { AIClient.models(ctx) }
+                } catch (e: Exception) {
+                    error = e.message ?: e.javaClass.simpleName
+                    emptyList()
+                }
+                if (!isAdded) return@Thread
+                requireActivity().runOnUiThread {
+                    if (list.isEmpty()) {
+                        status.text = getString(R.string.no_models) + (error?.let { "\n$it" } ?: "")
+                    } else {
+                        status.text = getString(R.string.found_models, list.size)
+                        AlertDialog.Builder(requireContext())
+                            .setTitle(R.string.models_dialog_title)
+                            .setItems(list.toTypedArray()) { _, which -> model.setText(list[which]) }
+                            .setNegativeButton(R.string.cancel, null)
+                            .show()
+                    }
+                }
+            }.start()
         }
 
         // ---- Test connection button ----
