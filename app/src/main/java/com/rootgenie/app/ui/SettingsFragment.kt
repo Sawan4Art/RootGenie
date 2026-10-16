@@ -56,7 +56,7 @@ class SettingsFragment : Fragment() {
             ),
             R.id.btn_preset_groq to Preset(
                 "https://api.groq.com/openai/v1/chat/completions",
-                "llama-3.3-70b-versatile"
+                "meta-llama/llama-4-scout-17b-16e-instruct"
             ),
             R.id.btn_preset_openai to Preset(
                 "https://api.openai.com/v1/chat/completions",
